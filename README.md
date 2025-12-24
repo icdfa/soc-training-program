@@ -93,11 +93,80 @@ Choose the study plan that best fits your schedule:
 
 ### Datasets
 
-- [CIC-IDS2017](./Datasets/CIC-IDS2017)
-- [CSE-CIC-IDS2018](./Datasets/CSE-CIC-IDS2018)
-- [CIC-DDoS2019](./Datasets/CIC-DDoS2019)
-- [CTU-13](./Datasets/CTU-13)
-- [UNSW-NB15](./Datasets/UNSW-NB15)
+- [CIC-IDS2017](./Datasets/CIC-IDS2017) - Comprehensive intrusion detection dataset with benign and attack traffic
+- [CSE-CIC-IDS2018](./Datasets/CSE-CIC-IDS2018) - Large-scale cloud-based dataset with 10 days of network activity
+- [CIC-DDoS2019](./Datasets/CIC-DDoS2019) - DDoS attack dataset with various attack vectors
+- [CTU-13](./Datasets/CTU-13) - Botnet traffic dataset from CTU University
+- [UNSW-NB15](./Datasets/UNSW-NB15) - Modern network intrusion dataset
+
+### Malware Samples
+
+The program includes **20 real malware samples** from the PMAT-labs repository for hands-on malware analysis. All samples are password-protected (password: `infected`) and should only be analyzed in an isolated virtual environment.
+
+**Location:** `Module-4/Labs/resources/malware_samples/`
+
+#### Basic Samples (Hello World)
+- [helloWorld.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/helloWorld-c/) - Simple C program for learning analysis tools
+- [helloWorld-stripped.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/helloWorld-c/) - Stripped version for advanced analysis
+
+#### Dropper Malware
+- [Dropper.DownloadFromURL.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/Dropper.DownloadFromURL.exe.malz/) - Dropper that downloads additional payloads
+  - **Lab:** Week 15 Lab C - Static Malware Analysis
+  - **Techniques:** URL download, process creation, persistence
+
+#### Multi-Stage Malware
+- [Malware.stage0.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/Malware.stage0.exe.malz/) - Multi-stage malware loader
+  - **Lab:** Week 15 Lab C - Static Malware Analysis
+  - **Techniques:** Staged execution, obfuscation, anti-analysis
+
+#### Maldocs (Malicious Documents)
+- [sheetsForFinancial.xlsx](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Excel/) - Malicious Excel document
+  - **Lab:** Week 16 Lab - Phishing Email Analysis
+  - **Techniques:** Macro-based malware, social engineering
+
+- [bookReport.docm](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Word/docm/) - Malicious Word document with macros
+  - **Lab:** Week 16 Lab - Phishing Email Analysis
+  - **Techniques:** VBA macros, document exploitation
+
+- [incrediblyPolishedResume.docx](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Word/docx/) - Weaponized resume document
+  - **Lab:** Week 16 Lab - Phishing Email Analysis
+  - **Techniques:** Document-based attacks, phishing
+
+#### Ransomware
+- [Ransomware.wannacry.exe](./Module-4/Labs/resources/malware_samples/4-1.Bossfight-wannacry.exe/) - WannaCry ransomware sample
+  - **Lab:** Week 15 Lab C & D - Static and Dynamic Malware Analysis
+  - **Techniques:** File encryption, network propagation, kill switch
+  - **MITRE ATT&CK:** T1486 (Data Encrypted for Impact), T1021 (Remote Services)
+
+#### Sample Organization
+
+```
+Module-4/Labs/resources/malware_samples/
+├── 2-1.AdvancedStaticAnalysis/          # Static analysis samples
+│   ├── Dropper.DownloadFromURL.exe.malz/
+│   ├── Malware.stage0.exe.malz/
+│   └── helloWorld-c/
+├── 2-2.AdvancedDynamicAnalysis/         # Dynamic analysis samples
+│   ├── Dropper.DownloadFromURL.exe/
+│   └── helloWorld-c/
+├── 3-1.GonePhishing-MaldocAnalysis/     # Malicious documents
+│   ├── Excel/
+│   └── Word/
+│       ├── docm/
+│       └── docx/
+└── 4-1.Bossfight-wannacry.exe/          # WannaCry ransomware
+    ├── Ransomware.wannacry.exe.malz.7z
+    ├── password.txt
+    └── answers/
+```
+
+**Safety Guidelines:**
+- **NEVER** execute malware on your host machine
+- **ALWAYS** use an isolated virtual machine (FlareVM recommended)
+- **DISCONNECT** the VM from the network during analysis
+- **TAKE SNAPSHOTS** before analyzing malware
+- **REVERT** to clean snapshots after analysis
+- All samples are password-protected with password: `infected`
 
 ### Assessments
 
