@@ -1,0 +1,35 @@
+Return-Path: <bounce-mc.us19.mailchimp.com@mail.example.com>
+Delivered-To: victim@example.com
+Received: from mail-qk1-f172.google.com (mail-qk1-f172.google.com. [209.85.222.172])
+        by mx.google.com with ESMTP id a22si1399999qkl.237.2025.12.24.12.06.00
+        for <victim@example.com>;
+        Tue, 24 Dec 2025 12:06:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-mc.us19.mailchimp.com@mail.example.com designates 209.85.222.172 as permitted sender) client-ip=209.85.222.172;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mailchimp.com header.s=k1 header.b=J9j9j9j9;
+       spf=pass (google.com: domain of bounce-mc.us19.mailchimp.com@mail.example.com designates 209.85.222.172 as permitted sender) smtp.mailfrom=bounce-mc.us19.mailchimp.com@mail.example.com
+Received: by mail-qk1-f172.google.com with SMTP id a22si1399999qkl.237.2025.12.24.12.06.00
+        for <victim@example.com>;
+        Tue, 24 Dec 2025 12:06:00 -0800 (PST)
+Received: from (127.0.0.1) by mail.example.com with ESMTP id 54321-12345-12345;
+        Tue, 24 Dec 2025 12:05:59 -0800 (PST)
+From: "Your Bank" <security@your-bank.com>
+To: <victim@example.com>
+Subject: Urgent: Security Alert - Action Required
+Date: Tue, 24 Dec 2025 12:05:59 -0800 (PST)
+Message-ID: <1234567890@mail.example.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<p>Dear Valued Customer,</p>
+<p>We have detected unusual activity on your account. For your security, we have temporarily suspended your account. To restore access, please verify your account details immediately by clicking the link below:</p>
+<p><a href="http://your-bank-security-update.com/login">http://your-bank-security-update.com/login</a></p>
+<p>If you do not verify your account within 24 hours, your account will be permanently closed.</p>
+<p>Thank you for your cooperation.</p>
+<p>Sincerely,</p>
+<p>Your Bank Security Team</p>
+</body>
+</html>
+</html>

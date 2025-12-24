@@ -1,0 +1,11 @@
+Dec 24 10:00:00 firewall %ASA-6-106015: Deny TCP (no connection) from 10.0.0.5/12345 to 192.168.1.10/22 flags SYN  on interface outside
+Dec 24 10:00:01 firewall %ASA-6-106015: Deny TCP (no connection) from 10.0.0.5/12346 to 192.168.1.10/23 flags SYN  on interface outside
+Dec 24 10:00:02 firewall %ASA-6-106015: Deny TCP (no connection) from 10.0.0.5/12347 to 192.168.1.10/80 flags SYN  on interface outside
+Dec 24 10:00:03 firewall %ASA-6-106015: Deny TCP (no connection) from 10.0.0.5/12348 to 192.168.1.10/443 flags SYN  on interface outside
+Dec 24 10:00:04 firewall %ASA-6-106015: Deny TCP (no connection) from 10.0.0.5/12349 to 192.168.1.10/3389 flags SYN  on interface outside
+Dec 24 10:00:05 firewall %ASA-4-106023: Deny tcp src outside:10.0.0.5/12350 dst inside:192.168.1.10/8080 by access-group "outside_access_in"
+Dec 24 10:00:06 firewall %ASA-4-106023: Deny tcp src outside:10.0.0.5/12351 dst inside:192.168.1.10/21 by access-group "outside_access_in"
+Dec 24 10:00:07 firewall %ASA-4-106023: Deny tcp src outside:10.0.0.5/12352 dst inside:192.168.1.10/25 by access-group "outside_access_in"
+Dec 24 10:00:08 firewall %ASA-4-106023: Deny tcp src outside:10.0.0.5/12353 dst inside:192.168.1.10/110 by access-group "outside_access_in"
+Dec 24 10:00:09 firewall %ASA-4-106023: Deny tcp src outside:10.0.0.5/12354 dst inside:192.168.1.10/143 by access-group "outside_access_in"
+Dec 24 10:00:10 firewall %ASA-6-302013: Built outbound TCP connection 1234 for outside:192.168.1.10/80 (192.168.1.10/80) to identity:172.16.0.10/12345 (172.16.0.10/12345)
