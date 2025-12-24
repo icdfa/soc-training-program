@@ -1,5 +1,14 @@
 # Week 9 Lab: Introduction to Splunk
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Install and configure a standalone Splunk instance.
+- Onboard data from Windows and Linux systems using the Splunk Universal Forwarder.
+- Run basic SPL (Search Processing Language) queries to search and filter data.
+- Identify specific security-related events in Splunk.
+
 ## Objective
 
 To gain hands-on experience with Splunk by installing it in your lab, onboarding data, and running basic searches.

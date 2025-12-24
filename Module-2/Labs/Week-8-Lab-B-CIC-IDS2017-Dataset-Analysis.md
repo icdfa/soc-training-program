@@ -1,5 +1,14 @@
 # Week 8 Lab B: CIC-IDS2017 Dataset Analysis
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Understand the structure and contents of the CIC-IDS2017 dataset.
+- Use Wireshark to analyze PCAP files from the dataset.
+- Use Splunk to ingest and query the labeled flow data.
+- Differentiate between benign traffic and various attack types (Brute Force, DoS, Web Attacks).
+
 ## Objective
 
 This lab will provide hands-on experience with the CIC-IDS2017 dataset, a comprehensive intrusion detection dataset. You will learn to identify and analyze various types of network attacks using this dataset.

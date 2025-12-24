@@ -1,5 +1,14 @@
 # Week 1 Lab: Threat Intelligence Research
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Gather threat intelligence from open-source intelligence (OSINT) sources
+- Analyze threat actor profiles and TTPs (Tactics, Techniques, and Procedures)
+- Map attack techniques to the MITRE ATT&CK framework
+- Create a threat intelligence summary report
+
 ## Objective
 
 To research a recent, well-known cyber attack and document the attacker's tactics, techniques, and procedures (TTPs) using the MITRE ATT&CK framework.

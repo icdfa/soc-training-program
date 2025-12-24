@@ -1,5 +1,14 @@
 # Week 14 Lab: Memory Forensics with Volatility
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Use Volatility to identify the operating system and other basic information from a memory dump.
+- Analyze running processes and network connections from a memory dump.
+- Identify suspicious processes and potential malware indicators in memory.
+- Document and report on findings from a memory forensics investigation.
+
 ## Objective
 
 To practice using Volatility to analyze a memory dump from a compromised system.

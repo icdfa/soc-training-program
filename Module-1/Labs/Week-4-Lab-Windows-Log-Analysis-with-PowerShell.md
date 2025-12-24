@@ -1,5 +1,14 @@
 # Week 4 Lab: Windows Log Analysis with PowerShell
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Use the `Get-WinEvent` cmdlet to query and filter Windows Security Event Logs.
+- Extract specific properties from event log entries.
+- Use PowerShell pipelining to group, sort, and count event data.
+- Analyze logon events to identify potential brute-force attacks.
+
 ## Objective
 
 To practice using PowerShell to analyze Windows Security Event Logs and identify suspicious activity.

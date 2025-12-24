@@ -1,5 +1,14 @@
 # Week 2 Lab: Home Lab Setup
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Install and configure VirtualBox for a SOC home lab
+- Set up and configure pfSense as a firewall
+- Deploy Splunk as a SIEM for log management
+- Configure target machines to send logs to Splunk
+
 ## Objective
 
 To build a virtual SOC home lab with a pfSense firewall, a Splunk SIEM, and target machines.

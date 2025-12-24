@@ -1,5 +1,14 @@
 # Week 3 Lab: Log Analysis with CLI Tools
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Use `grep` to search for specific patterns in log files.
+- Utilize `awk` to extract and manipulate specific fields from log data.
+- Employ `sed` to perform basic text transformations on log entries.
+- Chain command-line tools together to perform complex log analysis tasks.
+
 ## Objective
 
 To practice using essential Linux command-line tools (`grep`, `awk`, `sed`) to parse and analyze log files.

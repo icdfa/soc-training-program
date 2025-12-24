@@ -1,5 +1,14 @@
 # Week 10 Lab: Creating Correlation Searches in Splunk
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Write SPL queries to identify specific security events.
+- Create and configure correlation searches in Splunk.
+- Set up alerts based on the results of correlation searches.
+- Build a security dashboard to visualize alerts.
+
 ## Objective
 
 To practice creating correlation searches in Splunk to detect suspicious activity.

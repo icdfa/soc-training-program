@@ -1,5 +1,14 @@
 # Week 21 Lab: Developing a Threat Hunt Hypothesis
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Develop a threat hunting hypothesis based on a real-world threat scenario.
+- Identify the data sources required to test a threat hunting hypothesis.
+- Formulate search queries to search for evidence of malicious activity.
+- Understand the importance of a structured approach to threat hunting.
+
 ## 1. Objective
 
 In this lab, you will practice developing a threat hunt hypothesis based on a real-world threat scenario. This is a critical first step in the threat hunting process.

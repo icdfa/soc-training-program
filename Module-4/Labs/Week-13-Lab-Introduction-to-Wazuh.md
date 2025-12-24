@@ -1,5 +1,14 @@
 # Week 13 Lab: Introduction to Wazuh
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Install and configure a Wazuh server.
+- Deploy Wazuh agents to Windows and Linux endpoints.
+- Navigate the Wazuh web interface and analyze security events.
+- Understand how Wazuh can be used for endpoint detection and response (EDR).
+
 ## Objective
 
 To gain hands-on experience with Wazuh by installing it in your lab, deploying agents to your target machines, and analyzing the alerts.

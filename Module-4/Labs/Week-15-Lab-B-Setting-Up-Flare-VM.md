@@ -1,5 +1,14 @@
 # Week 15 Lab B: Setting Up Flare VM for Malware Analysis
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Install and configure Flare VM in a virtualized environment.
+- Understand the purpose of a malware analysis lab.
+- Identify the key tools included in the Flare VM distribution.
+- Create and manage snapshots for safe malware analysis.
+
 ## 1. Objective
 
 In this lab, you will set up Flare VM, a Windows-based security distribution designed for malware analysis, penetration testing, and reverse engineering. This will provide you with a safe, isolated environment to analyze malicious files.

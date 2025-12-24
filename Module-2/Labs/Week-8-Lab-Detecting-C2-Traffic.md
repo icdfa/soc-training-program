@@ -1,5 +1,14 @@
 # Week 8 Lab: Detecting C2 Traffic
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Identify the characteristics of C2 traffic, such as beaconing and DNS tunneling.
+- Use Wireshark to filter and analyze network traffic for signs of C2 communication.
+- Differentiate between normal and malicious network traffic patterns.
+- Document findings and report on potential C2 activity.
+
 ## Objective
 
 To practice analyzing network traffic to identify command and control (C2) communication.

@@ -1,5 +1,14 @@
 # Week 12 Lab: Advanced Splunk Searches
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Use the `eval` command to create new fields and perform calculations.
+- Use the `transaction` command to group related events into a single transaction.
+- Use the `geostats` command to visualize data on a map.
+- Apply advanced SPL commands to gain deeper insights from log data.
+
 ## Objective
 
 To practice using advanced Splunk SPL commands to perform complex analysis on your data.

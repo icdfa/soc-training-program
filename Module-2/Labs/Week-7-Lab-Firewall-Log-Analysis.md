@@ -1,5 +1,14 @@
 # Week 7 Lab: Firewall Log Analysis
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Parse and filter firewall logs using command-line tools or a SIEM.
+- Identify port scanning activity from firewall logs.
+- Determine the source and scope of a network scan.
+- Correlate firewall logs with other data sources to investigate security events.
+
 ## Objective
 
 To practice analyzing firewall logs to identify and investigate suspicious network traffic.

@@ -1,5 +1,14 @@
 # Week 17 Lab: Setting Up a Cloud Environment
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Create a free tier account with a major cloud provider.
+- Launch a virtual machine in the cloud.
+- Configure basic security settings for a cloud environment.
+- Connect to a cloud-based virtual machine using SSH.
+
 ## 1. Objective
 
 In this lab, you will create a free tier account with a major cloud provider (AWS, Azure, or GCP) and set up a basic cloud environment. This will be the foundation for the labs in this module.

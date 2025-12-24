@@ -1,5 +1,14 @@
 # Week 11 Lab: Integrating Threat Intelligence in Splunk
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Ingest external threat intelligence data into Splunk as a lookup file.
+- Use the `lookup` command to correlate log data with a threat intelligence feed.
+- Create a correlation search to detect connections to known malicious IP addresses.
+- Configure alerts based on threat intelligence matches.
+
 ## Objective
 
 To practice integrating threat intelligence into Splunk and using it to detect malicious activity.

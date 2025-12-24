@@ -1,5 +1,14 @@
 # Week 6 Lab: Introduction to Security Onion
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Install and configure Security Onion in a virtual environment.
+- Generate and capture network traffic using tools like Nmap and Metasploit.
+- Analyze security alerts in the Security Onion console.
+- Pivot from alerts to full packet captures for in-depth analysis.
+
 ## Objective
 
 To install and configure Security Onion in your virtual lab and use it to detect and analyze malicious traffic.

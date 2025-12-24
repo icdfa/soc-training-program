@@ -1,5 +1,14 @@
 # Week 16 Lab: Phishing Email Analysis
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Analyze email headers to identify the origin and path of an email.
+- Identify common phishing techniques, such as spoofing and suspicious links.
+- Use online tools to check the reputation of URLs and attachments.
+- Document and report on the findings of a phishing email investigation.
+
 ## Objective
 
 In this lab, you will analyze a sample phishing email to determine if it is malicious. You will use the techniques you learned this week to analyze the email headers, attachments, and URLs.

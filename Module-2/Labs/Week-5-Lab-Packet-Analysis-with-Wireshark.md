@@ -1,5 +1,14 @@
 # Week 5 Lab: Packet Analysis with Wireshark
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Navigate the Wireshark interface and apply display filters.
+- Identify and analyze common network protocols (DNS, HTTP, TCP).
+- Reconstruct and extract files from network traffic.
+- Identify suspicious network activity and potential indicators of compromise (IOCs).
+
 ## Objective
 
 To practice using Wireshark to analyze network traffic and identify common protocols and potential security issues.

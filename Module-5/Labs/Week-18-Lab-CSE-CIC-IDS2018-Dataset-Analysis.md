@@ -1,5 +1,14 @@
 # Week 18 Lab: CSE-CIC-IDS2018 Dataset Analysis
 
+## Learning Outcomes
+
+By the end of this lab, you will be able to:
+
+- Understand the structure and contents of the CSE-CIC-IDS2018 dataset.
+- Analyze network traffic and system logs from a cloud environment.
+- Detect various attack scenarios, such as infiltration and botnet activity.
+- Use Splunk to analyze and visualize large-scale security datasets.
+
 ## Objective
 
 This lab will provide hands-on experience with the CSE-CIC-IDS2018 dataset, a large-scale, diverse, and labeled dataset for intrusion detection. You will learn to analyze and detect various attacks in a cloud environment.
