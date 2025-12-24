@@ -5,8 +5,11 @@
 By the end of this lab, you will be able to:
 
 - Gather threat intelligence from open-source intelligence (OSINT) sources
+- Install and configure OpenCTI (Open Cyber Threat Intelligence) platform
+- Integrate AlienVault OTX (Open Threat Exchange) as a threat intelligence feed
 - Analyze threat actor profiles and TTPs (Tactics, Techniques, and Procedures)
 - Map attack techniques to the MITRE ATT&CK framework
+- Use a threat intelligence platform to enrich IOCs
 - Create a threat intelligence summary report
 
 ## Objective
@@ -22,10 +25,13 @@ You are a Junior SOC Analyst at SecureCorp, and your manager has asked you to cr
 - A web browser with internet access
 - A text editor or Markdown editor (VS Code, Typora, or similar)
 - Access to the MITRE ATT&CK Navigator
+- Ubuntu VM from Week 2 lab (or any Linux system with Docker)
+- At least 8GB RAM and 20GB free disk space for OpenCTI
+- AlienVault OTX account (free registration)
 
 ## Lab Duration
 
-Approximately 2-3 hours
+Approximately 4-5 hours (including OpenCTI setup)
 
 ---
 
@@ -440,12 +446,380 @@ Based on your understanding of the attack, propose detection strategies that cou
 
 ---
 
+## Part 6: OpenCTI Installation and Configuration (90 minutes)
+
+### Step 11: Install Docker and Docker Compose
+
+OpenCTI runs as a set of Docker containers, making deployment straightforward.
+
+1. **Update your system:**
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+2. **Install Docker:**
+   ```bash
+   # Install prerequisites
+   sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+   
+   # Add Docker's official GPG key
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   
+   # Add Docker repository
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   
+   # Install Docker
+   sudo apt update
+   sudo apt install -y docker-ce docker-ce-cli containerd.io
+   ```
+
+3. **Install Docker Compose:**
+   ```bash
+   sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   sudo chmod +x /usr/local/bin/docker-compose
+   ```
+
+4. **Add your user to docker group:**
+   ```bash
+   sudo usermod -aG docker $USER
+   newgrp docker
+   ```
+
+5. **Verify installation:**
+   ```bash
+   docker --version
+   docker-compose --version
+   ```
+
+### Step 12: Deploy OpenCTI
+
+1. **Create OpenCTI directory:**
+   ```bash
+   mkdir -p ~/opencti
+   cd ~/opencti
+   ```
+
+2. **Download OpenCTI docker-compose file:**
+   ```bash
+   wget https://raw.githubusercontent.com/OpenCTI-Platform/docker/master/docker-compose.yml
+   ```
+
+3. **Generate UUIDs for configuration:**
+   ```bash
+   # Install uuidgen if not available
+   sudo apt install -y uuid-runtime
+   
+   # Generate UUIDs
+   echo "OPENCTI_ADMIN_TOKEN=$(uuidgen)" > .env
+   echo "MINIO_ROOT_USER=$(uuidgen)" >> .env
+   echo "MINIO_ROOT_PASSWORD=$(uuidgen)" >> .env
+   echo "RABBITMQ_DEFAULT_USER=guest" >> .env
+   echo "RABBITMQ_DEFAULT_PASS=$(uuidgen)" >> .env
+   echo "CONNECTOR_EXPORT_FILE_STIX_ID=$(uuidgen)" >> .env
+   echo "CONNECTOR_IMPORT_FILE_STIX_ID=$(uuidgen)" >> .env
+   ```
+
+4. **View your admin token (save this!):**
+   ```bash
+   cat .env | grep OPENCTI_ADMIN_TOKEN
+   ```
+
+5. **Start OpenCTI:**
+   ```bash
+   docker-compose up -d
+   ```
+
+6. **Monitor the startup (this takes 5-10 minutes):**
+   ```bash
+   docker-compose logs -f opencti
+   ```
+
+   **Wait for:** "OpenCTI platform is ready and available"
+
+7. **Verify all containers are running:**
+   ```bash
+   docker-compose ps
+   ```
+
+   You should see:
+   - opencti
+   - redis
+   - elasticsearch
+   - minio
+   - rabbitmq
+   - worker (multiple instances)
+   - connector-export-file-stix
+   - connector-import-file-stix
+
+### Step 13: Access OpenCTI Web Interface
+
+1. **Open your browser and navigate to:**
+   ```
+   http://localhost:8080
+   ```
+
+   Or if accessing from host machine:
+   ```
+   http://[VM-IP]:8080
+   ```
+
+2. **Login:**
+   - Email: `admin@opencti.io`
+   - Password: `admin`
+
+3. **Change the default password:**
+   - Click on your profile (top right)
+   - Go to **Profile → Password**
+   - Set a strong password
+
+4. **Explore the interface:**
+   - **Dashboard:** Overview of threat intelligence
+   - **Analysis:** Threat actors, campaigns, incidents
+   - **Observations:** Indicators, observables
+   - **Data:** Import/export data
+   - **Settings:** Configuration and connectors
+
+---
+
+## Part 7: AlienVault OTX Integration (45 minutes)
+
+### Step 14: Create AlienVault OTX Account
+
+1. **Go to AlienVault OTX:**
+   - Navigate to: https://otx.alienvault.com/
+
+2. **Sign up for a free account:**
+   - Click **Sign Up**
+   - Fill in your details
+   - Verify your email
+
+3. **Get your API Key:**
+   - Log in to OTX
+   - Click on your username (top right)
+   - Go to **Settings**
+   - Copy your **OTX Key** (save this securely!)
+
+### Step 15: Install AlienVault OTX Connector in OpenCTI
+
+1. **Create connector directory:**
+   ```bash
+   cd ~/opencti
+   mkdir -p connectors
+   cd connectors
+   ```
+
+2. **Download AlienVault OTX connector docker-compose:**
+   ```bash
+   wget https://raw.githubusercontent.com/OpenCTI-Platform/connectors/master/external-import/alienvault/docker-compose.yml -O docker-compose-otx.yml
+   ```
+
+3. **Create connector configuration:**
+   ```bash
+   nano .env-otx
+   ```
+
+4. **Add the following configuration:**
+   ```bash
+   OPENCTI_URL=http://opencti:8080
+   OPENCTI_TOKEN=[Your OPENCTI_ADMIN_TOKEN from Step 12]
+   CONNECTOR_ID=$(uuidgen)
+   CONNECTOR_NAME=AlienVault
+   CONNECTOR_SCOPE=alienvault
+   CONNECTOR_CONFIDENCE_LEVEL=50
+   CONNECTOR_UPDATE_EXISTING_DATA=false
+   CONNECTOR_LOG_LEVEL=info
+   ALIENVAULT_BASE_URL=https://otx.alienvault.com
+   ALIENVAULT_API_KEY=[Your OTX API Key]
+   ALIENVAULT_TLP=White
+   ALIENVAULT_CREATE_OBSERVABLES=true
+   ALIENVAULT_CREATE_INDICATORS=true
+   ALIENVAULT_PULSE_START_TIMESTAMP=2024-01-01
+   ALIENVAULT_REPORT_TYPE=threat-report
+   ALIENVAULT_GUESS_MALWARE=false
+   ALIENVAULT_GUESS_CVE=false
+   ALIENVAULT_EXCLUDED_PULSE_INDICATOR_TYPES=FileHash-MD5,FileHash-SHA1
+   ALIENVAULT_ENABLE_RELATIONSHIPS=true
+   ALIENVAULT_ENABLE_ATTACK_PATTERNS_INDICATES=true
+   ALIENVAULT_INTERVAL_SEC=1800
+   ```
+
+5. **Start the connector:**
+   ```bash
+   docker-compose -f docker-compose-otx.yml --env-file .env-otx up -d
+   ```
+
+6. **Verify connector is running:**
+   ```bash
+   docker-compose -f docker-compose-otx.yml ps
+   docker-compose -f docker-compose-otx.yml logs -f
+   ```
+
+### Step 16: Verify AlienVault OTX Integration
+
+1. **In OpenCTI web interface:**
+   - Go to **Data → Connectors**
+   - You should see **AlienVault** connector
+   - Status should be **Running**
+   - Check the last sync time
+
+2. **View imported threat intelligence:**
+   - Go to **Observations → Indicators**
+   - You should see indicators imported from AlienVault OTX
+   - Filter by source: AlienVault
+
+3. **Explore threat actors:**
+   - Go to **Threats → Threat Actors**
+   - Browse threat actors from AlienVault OTX
+
+4. **Search for specific threats:**
+   - Use the search bar to look for "APT29" or "SolarWinds"
+   - Explore the relationships and indicators
+
+---
+
+## Part 8: Enriching SolarWinds IOCs with OpenCTI (30 minutes)
+
+### Step 17: Import SolarWinds IOCs into OpenCTI
+
+1. **Create a STIX bundle with SolarWinds IOCs:**
+   
+   Create a file named `solarwinds-iocs.json`:
+   ```json
+   {
+     "type": "bundle",
+     "id": "bundle--solarwinds-2024",
+     "objects": [
+       {
+         "type": "indicator",
+         "spec_version": "2.1",
+         "id": "indicator--solarwinds-domain-1",
+         "created": "2024-01-01T00:00:00.000Z",
+         "modified": "2024-01-01T00:00:00.000Z",
+         "name": "SolarWinds C2 Domain",
+         "description": "Command and Control domain used in SolarWinds attack",
+         "pattern": "[domain-name:value = 'avsvmcloud.com']",
+         "pattern_type": "stix",
+         "valid_from": "2024-01-01T00:00:00.000Z",
+         "labels": ["malicious-activity"]
+       },
+       {
+         "type": "indicator",
+         "spec_version": "2.1",
+         "id": "indicator--solarwinds-hash-1",
+         "created": "2024-01-01T00:00:00.000Z",
+         "modified": "2024-01-01T00:00:00.000Z",
+         "name": "SUNBURST DLL Hash",
+         "description": "SHA256 hash of malicious SolarWinds DLL",
+         "pattern": "[file:hashes.'SHA-256' = '32519b85c0b422e4656de6e6c41878e95fd95026267daab4215ee59c107d6c77']",
+         "pattern_type": "stix",
+         "valid_from": "2024-01-01T00:00:00.000Z",
+         "labels": ["malicious-activity"]
+       }
+     ]
+   }
+   ```
+
+2. **Import into OpenCTI:**
+   - In OpenCTI, go to **Data → Import**
+   - Click **Upload a file**
+   - Select your `solarwinds-iocs.json` file
+   - Wait for import to complete
+
+3. **Verify import:**
+   - Go to **Observations → Indicators**
+   - Search for "SolarWinds" or "SUNBURST"
+   - Click on an indicator to view details
+
+### Step 18: Analyze IOC Enrichment
+
+1. **Check for related intelligence:**
+   - Click on a SolarWinds indicator
+   - View the **Knowledge** tab
+   - Look for:
+     - Related threat actors (APT29)
+     - Related campaigns
+     - Related malware
+     - Other indicators
+
+2. **Explore relationships:**
+   - Click on **Graph view**
+   - Visualize connections between:
+     - Indicators
+     - Threat actors
+     - Attack patterns
+     - Malware
+
+3. **Export enriched intelligence:**
+   - Select indicators
+   - Click **Export**
+   - Choose format (STIX, CSV, PDF)
+   - Download for your report
+
+---
+
+## Part 9: Creating Threat Intelligence Report with OpenCTI Data (30 minutes)
+
+### Step 19: Generate Report in OpenCTI
+
+1. **Create a new report:**
+   - Go to **Analysis → Reports**
+   - Click **+ Create**
+   - Fill in:
+     - **Name:** SolarWinds SUNBURST Attack Analysis
+     - **Description:** Comprehensive analysis of the SolarWinds supply chain attack
+     - **Report types:** Threat Report
+     - **Confidence level:** High
+     - **Published:** [Today's date]
+
+2. **Add entities to the report:**
+   - In the report, click **+ Add entities**
+   - Search and add:
+     - Threat Actor: APT29
+     - Malware: SUNBURST
+     - All SolarWinds indicators
+     - Related attack patterns
+
+3. **Write the report content:**
+   - Use the **Content** tab
+   - Add your analysis from earlier parts
+   - Include:
+     - Executive summary
+     - Technical analysis
+     - IOCs
+     - Recommendations
+
+4. **Generate visualizations:**
+   - Use the **Graph** view to create relationship diagrams
+   - Take screenshots for your report
+
+### Step 20: Export and Finalize Report
+
+1. **Export from OpenCTI:**
+   - Click **Export**
+   - Choose **PDF** or **STIX**
+   - Download the file
+
+2. **Enhance with your research:**
+   - Combine OpenCTI data with your manual research
+   - Add MITRE ATT&CK mappings
+   - Include detection rules
+   - Add remediation steps
+
+---
+
 ## Deliverables
 
 Submit the following files:
 
-1. **SolarWinds-Threat-Report.md** - Your complete threat intelligence report
+1. **SolarWinds-Threat-Report.md** - Your complete threat intelligence report (enhanced with OpenCTI data)
 2. **SolarWinds-Attack.json** - Your MITRE ATT&CK Navigator layer
+3. **OpenCTI-Screenshots/** - Directory containing:
+   - OpenCTI dashboard screenshot
+   - AlienVault OTX connector status
+   - SolarWinds indicators in OpenCTI
+   - Threat actor graph visualization
+4. **solarwinds-iocs.json** - STIX bundle with SolarWinds IOCs
+5. **OpenCTI-Report-Export.pdf** - Report generated from OpenCTI
 
 ## Evaluation Criteria
 
@@ -455,13 +829,24 @@ Your lab will be evaluated based on:
 - **Accuracy:** Are your findings accurate and well-researched?
 - **Technical Depth:** Did you provide sufficient technical detail?
 - **ATT&CK Mapping:** Did you correctly map TTPs to the MITRE ATT&CK framework?
+- **OpenCTI Setup:** Did you successfully install and configure OpenCTI?
+- **Threat Intelligence Integration:** Did you integrate AlienVault OTX successfully?
+- **IOC Enrichment:** Did you enrich IOCs using OpenCTI?
 - **Practical Value:** Are your detection and mitigation recommendations actionable?
 
 ## Additional Resources
 
+**SolarWinds Attack:**
 - [MITRE ATT&CK: SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024/)
 - [NSA/CISA Joint Advisory on SolarWinds](https://media.defense.gov/2021/Apr/15/2002621240/-1/-1/0/CSA_SVR_TARGETS_US_ALLIES_UOO13234021.PDF)
 - [Volexity: Dark Halo Leverages SolarWinds Compromise](https://www.volexity.com/blog/2020/12/14/dark-halo-leverages-solarwinds-compromise-to-breach-organizations/)
+
+**Threat Intelligence Platforms:**
+- [OpenCTI Documentation](https://docs.opencti.io/)
+- [OpenCTI Connectors](https://github.com/OpenCTI-Platform/connectors)
+- [AlienVault OTX](https://otx.alienvault.com/)
+- [STIX 2.1 Specification](https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html)
+- [TAXII 2.1 Specification](https://docs.oasis-open.org/cti/taxii/v2.1/taxii-v2.1.html)
 
 ## Next Steps
 
