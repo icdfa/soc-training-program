@@ -55,6 +55,53 @@ Choose the study plan that best fits your schedule:
 - [Detailed Program Schedule](./Documentation/SOC-Program-Schedule.md)
 - [Official Syllabus](./Documentation/Syllabus.md)
 
+## Lab Status
+
+### Fully Expanded Labs (400-900 lines each)
+
+The following 15 labs have been comprehensively expanded with detailed, step-by-step instructions:
+
+**Module 1: SOC Fundamentals**
+- ✅ [Week 1: Threat Intelligence Research](./Module-1/Labs/Week-1-Lab-Threat-Intelligence-Research.md) (853 lines) - OpenCTI + AlienVault OTX
+- ✅ [Week 2: Home Lab Setup](./Module-1/Labs/Week-2-Lab-Home-Lab-Setup.md) (600+ lines)
+- ✅ [Week 3: CLI Log Analysis](./Module-1/Labs/Week-3-Lab-Log-Analysis-with-CLI-Tools.md) (550+ lines)
+- ✅ [Week 4: PowerShell Log Analysis](./Module-1/Labs/Week-4-Lab-Windows-Log-Analysis-with-PowerShell.md) (700+ lines)
+
+**Module 2: Network Traffic Analysis**
+- ✅ [Week 5: Wireshark Packet Analysis](./Module-2/Labs/Week-5-Lab-Packet-Analysis-with-Wireshark.md) (740 lines)
+- ✅ [Week 6: Security Onion](./Module-2/Labs/Week-6-Lab-Introduction-to-Security-Onion.md) (727 lines)
+- ✅ [Week 7: Firewall Log Analysis](./Module-2/Labs/Week-7-Lab-Firewall-Log-Analysis.md) (786 lines)
+- ✅ [Week 8-B: CIC-IDS2017 Dataset Analysis](./Module-2/Labs/Week-8-Lab-B-CIC-IDS2017-Dataset-Analysis.md) (607 lines)
+- ✅ [Week 8-C2: C2 Traffic Detection](./Module-2/Labs/Week-8-Lab-Detecting-C2-Traffic.md) (900+ lines)
+
+**Module 3: SIEM and Log Management**
+- ✅ [Week 9: Splunk Introduction](./Module-3/Labs/Week-9-Lab-Introduction-to-Splunk.md) (738 lines)
+
+**Module 4: Incident Response and Forensics**
+- ✅ [Week 13: Wazuh HIDS/EDR](./Module-4/Labs/Week-13-Lab-Introduction-to-Wazuh.md) (786 lines) ⭐
+- ✅ [Week 14: Volatility Memory Forensics](./Module-4/Labs/Week-14-Lab-Memory-Forensics-with-Volatility.md) (752 lines) ⭐
+- ✅ [Week 15-C: Static Malware Analysis](./Module-4/Labs/Week-15-Lab-C-Static-Malware-Analysis.md) (596 lines)
+
+**Module 5: Cloud SOC Monitoring**
+- ✅ [Week 18: CSE-CIC-IDS2018 Dataset Analysis](./Module-5/Labs/Week-18-Lab-CSE-CIC-IDS2018-Dataset-Analysis.md) (607 lines)
+
+**Module 6: Threat Hunting**
+- ✅ [Week 21: Threat Hunting Hypothesis Development](./Module-6-Threat-Hunting-and-Cyber-Threat-Intelligence/Labs/Week-21-Lab-Developing-a-Threat-Hunt-Hypothesis.md) (811 lines) ⭐
+
+⭐ = Priority/Advanced Labs
+
+### Labs with Templates Available
+
+The remaining 13 labs have basic structure and can be expanded using the [Lab Expansion Template](./Documentation/Lab-Expansion-Template.md):
+
+**Module 3:** Week 10, 11, 12  
+**Module 4:** Week 15, 15-B, 15-D, 16  
+**Module 5:** Week 17, Week 12 (Cloud)  
+**Module 6:** Week 13 (Advanced Hunting)  
+**Module 7:** Week 14 (AI/ML)
+
+---
+
 ## Navigation
 
 ### Modules
@@ -101,42 +148,62 @@ Choose the study plan that best fits your schedule:
 
 ### Malware Samples
 
-The program includes **20 real malware samples** from the PMAT-labs repository for hands-on malware analysis. All samples are password-protected (password: `infected`) and should only be analyzed in an isolated virtual environment.
+The program includes **20+ real malware samples** from the PMAT-labs repository for hands-on malware analysis. All samples are password-protected (password: `infected`) and should only be analyzed in an isolated virtual environment.
 
 **Location:** `Module-4/Labs/resources/malware_samples/`
 
-#### Basic Samples (Hello World)
-- [helloWorld.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/helloWorld-c/) - Simple C program for learning analysis tools
-- [helloWorld-stripped.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/helloWorld-c/) - Stripped version for advanced analysis
+**⚠️ CRITICAL SAFETY WARNING:**
+- **NEVER** execute malware on your host machine
+- **ALWAYS** use an isolated virtual machine (FlareVM recommended)
+- **DISCONNECT** the VM from the network during analysis
+- **TAKE SNAPSHOTS** before analyzing malware
+- **REVERT** to clean snapshots after analysis
+- All samples are password-protected with password: `infected`
 
-#### Dropper Malware
-- [Dropper.DownloadFromURL.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/Dropper.DownloadFromURL.exe.malz/) - Dropper that downloads additional payloads
-  - **Lab:** Week 15 Lab C - Static Malware Analysis
-  - **Techniques:** URL download, process creation, persistence
+#### Malware Sample Categories
 
-#### Multi-Stage Malware
-- [Malware.stage0.exe](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/Malware.stage0.exe.malz/) - Multi-stage malware loader
-  - **Lab:** Week 15 Lab C - Static Malware Analysis
-  - **Techniques:** Staged execution, obfuscation, anti-analysis
+##### 1. Basic Samples (Learning Tools)
+**Purpose:** Learn malware analysis tools and techniques with simple, safe samples
 
-#### Maldocs (Malicious Documents)
-- [sheetsForFinancial.xlsx](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Excel/) - Malicious Excel document
-  - **Lab:** Week 16 Lab - Phishing Email Analysis
-  - **Techniques:** Macro-based malware, social engineering
+| Sample | Location | Lab | Description |
+|--------|----------|-----|-------------|
+| `helloWorld.exe` | [2-1.AdvancedStaticAnalysis/helloWorld-c/](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/helloWorld-c/) | Week 15 Lab C | Simple C program for learning static analysis tools (PEStudio, IDA, Ghidra) |
+| `helloWorld-stripped.exe` | [2-1.AdvancedStaticAnalysis/helloWorld-c/](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/helloWorld-c/) | Week 15 Lab C | Stripped version for advanced reverse engineering practice |
 
-- [bookReport.docm](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Word/docm/) - Malicious Word document with macros
-  - **Lab:** Week 16 Lab - Phishing Email Analysis
-  - **Techniques:** VBA macros, document exploitation
+##### 2. Dropper Malware
+**Purpose:** Understand multi-stage malware delivery mechanisms
 
-- [incrediblyPolishedResume.docx](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Word/docx/) - Weaponized resume document
-  - **Lab:** Week 16 Lab - Phishing Email Analysis
-  - **Techniques:** Document-based attacks, phishing
+| Sample | Location | Lab | Techniques | MITRE ATT&CK |
+|--------|----------|-----|------------|---------------|
+| `Dropper.DownloadFromURL.exe` | [2-1.AdvancedStaticAnalysis/Dropper.DownloadFromURL.exe.malz/](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/Dropper.DownloadFromURL.exe.malz/) | Week 15 Lab C & D | URL download, process creation, persistence | T1105 (Ingress Tool Transfer), T1543 (Create or Modify System Process) |
 
-#### Ransomware
-- [Ransomware.wannacry.exe](./Module-4/Labs/resources/malware_samples/4-1.Bossfight-wannacry.exe/) - WannaCry ransomware sample
-  - **Lab:** Week 15 Lab C & D - Static and Dynamic Malware Analysis
-  - **Techniques:** File encryption, network propagation, kill switch
-  - **MITRE ATT&CK:** T1486 (Data Encrypted for Impact), T1021 (Remote Services)
+##### 3. Multi-Stage Malware
+**Purpose:** Analyze complex, staged malware execution chains
+
+| Sample | Location | Lab | Techniques | MITRE ATT&CK |
+|--------|----------|-----|------------|---------------|
+| `Malware.stage0.exe` | [2-1.AdvancedStaticAnalysis/Malware.stage0.exe.malz/](./Module-4/Labs/resources/malware_samples/2-1.AdvancedStaticAnalysis/Malware.stage0.exe.malz/) | Week 15 Lab C & D | Staged execution, obfuscation, anti-analysis | T1027 (Obfuscated Files), T1497 (Virtualization/Sandbox Evasion) |
+
+##### 4. Maldocs (Malicious Documents)
+**Purpose:** Analyze document-based malware delivery (most common phishing vector)
+
+| Sample | Type | Location | Lab | Techniques | MITRE ATT&CK |
+|--------|------|----------|-----|------------|---------------|
+| `sheetsForFinancial.xlsx` | Excel | [3-1.GonePhishing-MaldocAnalysis/Excel/](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Excel/) | Week 16 | Macro-based malware, social engineering | T1566.001 (Phishing: Spearphishing Attachment), T1204.002 (User Execution: Malicious File) |
+| `bookReport.docm` | Word (Macro) | [3-1.GonePhishing-MaldocAnalysis/Word/docm/](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Word/docm/) | Week 16 | VBA macros, document exploitation | T1566.001, T1059.005 (Visual Basic) |
+| `incrediblyPolishedResume.docx` | Word | [3-1.GonePhishing-MaldocAnalysis/Word/docx/](./Module-4/Labs/resources/malware_samples/3-1.GonePhishing-MaldocAnalysis/Word/docx/) | Week 16 | Document-based attacks, phishing | T1566.001, T1204.002 |
+
+##### 5. Ransomware (Advanced)
+**Purpose:** Analyze real-world ransomware (WannaCry) - most dangerous sample in the collection
+
+| Sample | Location | Lab | Techniques | MITRE ATT&CK |
+|--------|----------|-----|------------|---------------|
+| `Ransomware.wannacry.exe` | [4-1.Bossfight-wannacry.exe/](./Module-4/Labs/resources/malware_samples/4-1.Bossfight-wannacry.exe/) | Week 15 Lab C & D | File encryption, network propagation, kill switch, SMB exploitation (EternalBlue) | T1486 (Data Encrypted for Impact), T1021 (Remote Services), T1210 (Exploitation of Remote Services) |
+
+**WannaCry Analysis Resources:**
+- Password file: `password.txt` (contains: `infected`)
+- Answer key: `answers/` directory
+- **Extreme caution required** - This is real, destructive ransomware
 
 #### Sample Organization
 
@@ -180,7 +247,8 @@ Module-4/Labs/resources/malware_samples/
 - [Glossary](./Documentation/Glossary.md)
 - [Career Pathways](./Documentation/Career-Pathways.md)
 - [Tools Guide](./Documentation/Tools-Guide.md)
-- [Lab Guide](./Documentation/Lab-Guide.md)
+- [Comprehensive Lab Guide](./Documentation/Comprehensive-Lab-Guide.md) - **NEW!** Complete guide to all labs
+- [Lab Expansion Template](./Documentation/Lab-Expansion-Template.md) - **NEW!** Template for expanding remaining labs
 
 ### Templates
 
