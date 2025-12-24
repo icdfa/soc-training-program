@@ -16,38 +16,110 @@ This program is built on a foundation of real-world scenarios, practical labs, a
 
 ### Key Features
 
-- **100% Hands-On:** Every module includes practical labs and exercises.
+- **100% Hands-On:** Every module includes practical labs and exercises with real datasets.
 - **Build Your Own SOC Lab:** Create a complete virtual lab with a SIEM, EDR, and network monitoring tools.
-- **Industry-Standard Tools:** Gain experience with Splunk, Wireshark, Security Onion, Volatility, and more.
-- **Real-World Scenarios:** Analyze real malware samples, investigate phishing emails, and respond to simulated incidents.
+- **Industry-Standard Tools:** Gain experience with Splunk, Wireshark, Security Onion, Volatility, FlareVM, and more.
+- **Real-World Scenarios:** Analyze real malware samples from PMAT labs, investigate phishing emails, and respond to simulated incidents.
+- **5 Major Datasets:** Work with CIC-IDS2017, CSE-CIC-IDS2018, CIC-DDoS2019, CTU-13, and UNSW-NB15 datasets.
+- **20 Malware Samples:** Hands-on malware analysis with real samples including WannaCry, RATs, droppers, and maldocs.
 - **Career-Focused:** The program culminates in a capstone project and career preparation module to help you land your dream job.
 
 ## Course Structure
 
-The course is divided into six modules, each lasting four weeks:
+The course is divided into seven modules:
 
-| Module | Title                               | Duration | Key Topics                                                                 |
-| :----: | :---------------------------------- | :------: | :------------------------------------------------------------------------- |
-|   1    | SOC Fundamentals & Home Lab Setup   | 4 Weeks  | SOC operations, threat landscape, home lab setup, Linux/Windows fundamentals |
-|   2    | Network Security & Traffic Analysis | 4 Weeks  | Networking protocols, NSM tools, packet analysis, firewall/IDS/IPS logs      |
-|   3    | SIEM & Log Management               | 4 Weeks  | SIEM architecture, log analysis, alert triage, rule creation, threat intel   |
-|   4    | Endpoint Security & Malware Analysis| 4 Weeks  | EDR, endpoint forensics, static/dynamic malware analysis, phishing analysis  |
-|   5    | Incident Response & Threat Hunting  | 4 Weeks  | Incident response lifecycle, threat hunting methodologies, reporting         |
-|   6    | Capstone Project & Career Prep      | 4 Weeks  | Real-world SOC simulation, resume building, interview preparation          |
+| Module | Title                                         | Duration | Key Topics                                                                 |
+| :----: | :-------------------------------------------- | :------: | :------------------------------------------------------------------------- |
+|   1    | SOC Fundamentals & Home Lab Setup             | 4 Weeks  | SOC operations, threat landscape, home lab setup, Linux/Windows fundamentals |
+|   2    | Network Security & Traffic Analysis           | 4 Weeks  | Networking protocols, NSM tools, packet analysis, firewall/IDS/IPS logs, CIC-IDS2017 |
+|   3    | SIEM & Log Management                         | 4 Weeks  | SIEM architecture, log analysis, alert triage, rule creation, threat intel   |
+|   4    | Endpoint Security & Malware Analysis          | 4 Weeks  | EDR, endpoint forensics, FlareVM, static/dynamic malware analysis, phishing analysis  |
+|   5    | Cloud SOC Monitoring                          | 4 Weeks  | Cloud security, AWS/Azure/GCP security services, CSE-CIC-IDS2018            |
+|   6    | Threat Hunting & Cyber Threat Intelligence    | 2 Weeks  | Threat hunting methodologies, MITRE ATT&CK, CTI integration                 |
+|   7    | AI/ML in SOC & Capstone Project               | 2 Weeks  | AI-powered threat detection, capstone project, career preparation           |
+
+## Study Plans
+
+Choose the study plan that best fits your schedule:
+
+| Track         | Duration | Weekly Commitment | Description                                                                 |
+| :------------ | :------- | :---------------- | :-------------------------------------------------------------------------- |
+| **Fast Track**    | 4 Months | 20-25 hours       | Intensive program for dedicated learners                                    |
+| **Standard Track**| 6 Months | 13-15 hours       | Balanced approach for working professionals                                 |
+| **Part-Time Track**| 8 Months | 5-8 hours         | Flexible schedule for busy professionals                                    |
+
+**Study Plan Documents:**
+- [Fast Track Study Plan (4 Months)](./Documentation/Fast-Track-Study-Plan.md)
+- [Standard Track Study Plan (6 Months)](./Documentation/Standard-Track-Study-Plan.md)
+- [Part-Time Track Study Plan (8 Months)](./Documentation/Part-Time-Track-Study-Plan.md)
+- [Detailed Program Schedule](./Documentation/SOC-Program-Schedule.md)
+- [Official Syllabus](./Documentation/Syllabus.md)
 
 ## Navigation
 
+### Modules
+
 - [Module 1: SOC Fundamentals & Home Lab Setup](./Module-1)
+  - [Study Materials](./Module-1/Study-Materials)
+  - [Labs](./Module-1/Labs)
+  - [Assignments](./Module-1/Assignments)
+  - [Learning Outcomes](./Module-1/Learning-Outcomes.md)
+  
 - [Module 2: Network Security & Traffic Analysis](./Module-2)
+  - [Study Materials](./Module-2/Study-Materials)
+  - [Labs](./Module-2/Labs)
+  - [Assignments](./Module-2/Assignments)
+  
 - [Module 3: SIEM & Log Management](./Module-3)
+  - [Study Materials](./Module-3/Study-Materials)
+  - [Labs](./Module-3/Labs)
+  - [Assignments](./Module-3/Assignments)
+  
 - [Module 4: Endpoint Security & Malware Analysis](./Module-4)
-- [Module 5: Incident Response & Threat Hunting](./Module-5)
-- [Module 6: Capstone Project & Career Prep](./Module-6)
-- [Assessments](./Assessments)
-- [Capstone Project](./Capstone-Project)
-- [Documentation](./Documentation)
-- [Templates](./Templates)
-- [Resources](./Resources)
+  - [Study Materials](./Module-4/Study-Materials)
+  - [Labs](./Module-4/Labs)
+  - [Assignments](./Module-4/Assignments)
+  
+- [Module 5: Cloud SOC Monitoring](./Module-5-Cloud-SOC-Monitoring)
+  - [Study Materials](./Module-5-Cloud-SOC-Monitoring/Study-Materials)
+  - [Labs](./Module-5-Cloud-SOC-Monitoring/Labs)
+  
+- [Module 6: Threat Hunting & Cyber Threat Intelligence](./Module-6-Threat-Hunting-and-Cyber-Threat-Intelligence)
+  - [Study Materials](./Module-6-Threat-Hunting-and-Cyber-Threat-Intelligence/Study-Materials)
+  - [Labs](./Module-6-Threat-Hunting-and-Cyber-Threat-Intelligence/Labs)
+  
+- [Module 7: AI/ML in SOC & Capstone](./Module-7-AI-and-Machine-Learning-in-SOC)
+  - [Study Materials](./Module-7-AI-and-Machine-Learning-in-SOC/Study-Materials)
+
+### Datasets
+
+- [CIC-IDS2017](./Datasets/CIC-IDS2017)
+- [CSE-CIC-IDS2018](./Datasets/CSE-CIC-IDS2018)
+- [CIC-DDoS2019](./Datasets/CIC-DDoS2019)
+- [CTU-13](./Datasets/CTU-13)
+- [UNSW-NB15](./Datasets/UNSW-NB15)
+
+### Assessments
+
+- [Pre-Assessment](./Assessments/Pre-Assessment.md)
+- [Module 1 Quiz](./Module-1/Assessments/Module-1-Quiz.md)
+- [Final Exam](./Assessments/Final-Exam.md)
+
+### Documentation
+
+- [FAQ](./Documentation/FAQ.md)
+- [Glossary](./Documentation/Glossary.md)
+- [Career Pathways](./Documentation/Career-Pathways.md)
+- [Tools Guide](./Documentation/Tools-Guide.md)
+- [Lab Guide](./Documentation/Lab-Guide.md)
+
+### Templates
+
+- [Incident Response Report Template](./Templates/Incident-Response-Report-Template.md)
+
+### Capstone Project
+
+- [Capstone Project Instructions](./Capstone-Project/Capstone-Project.md)
 
 ## Getting Started
 
@@ -55,9 +127,11 @@ The course is divided into six modules, each lasting four weeks:
    ```bash
    git clone https://github.com/icdfa/soc-training-program.git
    ```
-2. **Review the Curriculum:** Start by reading the full [Course Curriculum](./Documentation/SOC-Training-Curriculum.md).
-3. **Set Up Your Lab:** Follow the instructions in [Module 1](./Module-1) to build your virtual SOC home lab.
-4. **Begin Your Journey:** Follow the weekly study plans and complete the labs and assignments for each module.
+2. **Take the Pre-Assessment:** Complete the [Pre-Assessment](./Assessments/Pre-Assessment.md) to gauge your current knowledge.
+3. **Choose Your Study Plan:** Select the [study plan](./Documentation) that best fits your schedule.
+4. **Review the Syllabus:** Read the [Official Syllabus](./Documentation/Syllabus.md) to understand the program structure.
+5. **Set Up Your Lab:** Follow the instructions in [Module 1](./Module-1) to build your virtual SOC home lab.
+6. **Begin Your Journey:** Follow the weekly study plans and complete the labs and assignments for each module.
 
 ## About the Author
 
@@ -65,6 +139,14 @@ This program was developed by **Aminu Idris, AMCPN**, a seasoned cybersecurity p
 
 **Certifications:** CCNA, CompTIA Security+, CEH, OSCP, CISSP | MPCSEAN
 
+## Contributing
+
+We welcome contributions to the SOC Training Program! Please read our [Contributing Guidelines](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting a pull request.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
+
+## Contact
+
+For questions or support, please open an issue on our [GitHub repository](https://github.com/icdfa/soc-training-program).
